@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Colorfly Studio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" class="hidden"></script>
 </head>
-<body>
-    
+<body class="bg-gradient-to-r from-slate-900 to-slate-700 text-white">
+    <header>
+        <!-- Logo de la empresa -->
+        <div class="bg-sky-50/20 rounded-full p-1 border-1 border-sky-50/30 w-30 pl-3 pb-1" >
+            <!--<img src="./src/img/colorfly_studio.png" alt="Colorfly Studi logo" width="120" height="auto">-->
+                <span class="inline-flex shrink-0 rounded-full bg-sky-500 w-2 h-2"></span>
+                <span class="text-xs font-light text-white">Colorfly Studio</span>
+        </div>
+        <!--Barra generadora de colores-->
+        <section>
+            <h2>Generador de Colores</h2>
+            <input type="color" id="colorPicker" name="colorPicker" value="#ff0000">
+            <button onclick="generateColors()">Generar Paleta</button>  
+        </section>
+    </header>
+
+    <main>
+        <section>
+            <h2>Sección 1</h2>
+            <article>
+                <h3>Título del Artículo</h3>
+                <p>Contenido principal...</p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Sección 2</h2>
+            <article>
+                <h3>Título del Artículo</h3>
+                <p>Contenido principal...</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mi Sitio Web</p>
+    </footer>
+    <script src="./src/js/color.js"></script>
 </body>
 </html>
