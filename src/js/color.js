@@ -15,11 +15,31 @@
             newColor = document.createElement("div"); // crea un nuevo div
             newColor.classList.add('p-4', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
             grid.appendChild(newColor); // agrega el nuevo div al grid
-            
+            newColor.style.backgroundColor = generateNewColor(); // le asigna un color de fondo al nuevo div usando la función generateNewColor
         }
         console.log(miSelectColor);
-
-        // 2. Generar colores HEX aleatorios
+        
         //Guardarlo en una lista
         // Mostrar cada color como una caja
+        // 2. Generar colores HEX aleatorios
+        const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]  
+        
+        function getCharacter(index) {
+            return hexCharacters[index]
+        }
+
+        function generateNewColor() {
+            let hexColorRep = "#"
+
+            for (let index = 0; index < 6; index++){
+                const randomPosition = Math.floor ( Math.random() * hexCharacters.length ) 
+                hexColorRep += getCharacter( randomPosition )
+                
+            }
+            
+            return hexColorRep
+
+        }
+        
+        console.log( generateNewColor() )
     }
