@@ -18,28 +18,25 @@
             newColor.style.backgroundColor = generateNewColor(); // le asigna un color de fondo al nuevo div usando la función generateNewColor
         }
         console.log(miSelectColor);
-        
-        //Guardarlo en una lista
-        // Mostrar cada color como una caja
-        // 2. Generar colores HEX aleatorios
-        const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]  
-        
-        function getCharacter(index) {
+       
+    }
+    // Lista de todos los caracteres posibles en un color HEX
+    const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]  
+    // Esta función recibe un número y devuelve el caracter en esa posición del array hexCharacters y genera el color HEX aleatorio
+    function getCharacter(index) {
             return hexCharacters[index]
         }
-
+        // Esta función genera un color HEX aleatorio como "#A3F2C1"
         function generateNewColor() {
             let hexColorRep = "#"
-
+            // Un color HEX siempre tiene 6 caracteres, por eso repetimos 6 veces
             for (let index = 0; index < 6; index++){
+                // Elegimos una posición aleatoria de la lista (0 al 15)
                 const randomPosition = Math.floor ( Math.random() * hexCharacters.length ) 
-                hexColorRep += getCharacter( randomPosition )
-                
+                // Agarramos el caracter en esa posición y lo agregamos al color
+                hexColorRep += getCharacter(randomPosition)
             }
-            
+            // Regresamos el color completo, ejemplo: "#A3F2C1"
             return hexColorRep
-
-        }
         
-        console.log( generateNewColor() )
-    }
+        }
