@@ -13,15 +13,19 @@
         
         for (let i = 1; i<= miSelectColor; i++) {
             newColor = document.createElement("div"); // crea un nuevo div
-            newColor.classList.add('p-4', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
+            newColor.classList.add('p-5', 'w-64', 'h-25', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'flex-wrap', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
             grid.appendChild(newColor); // agrega el nuevo div al grid
-            newColor.style.backgroundColor = generateNewColor(); // le asigna un color de fondo al nuevo div usando la función generateNewColor
+            let miColor = generateNewColor(); //genera un color HEX aleatorio y lo guarda en la variable miColor
+            newColor.style.backgroundColor = miColor; // le asigna un color de fondo al nuevo div usando la función generateNewColor
+            newColor.style.color= "#ffffff"; // le asigna un color de texto blanco al nuevo div
+            newColor.innerHTML = miColor;
         }
         console.log(miSelectColor);
        
     }
     // Lista de todos los caracteres posibles en un color HEX
-    const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]  
+    const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"] 
+        
     // Esta función recibe un número y devuelve el caracter en esa posición del array hexCharacters y genera el color HEX aleatorio
     function getCharacter(index) {
             return hexCharacters[index]
@@ -37,6 +41,6 @@
                 hexColorRep += getCharacter(randomPosition)
             }
             // Regresamos el color completo, ejemplo: "#A3F2C1"
-            return hexColorRep
+            return hexColorRep;
         
         }
