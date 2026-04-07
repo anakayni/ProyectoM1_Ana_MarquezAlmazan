@@ -13,13 +13,20 @@
         
         for (let i = 1; i<= miSelectColor; i++) {
             newColor = document.createElement("div"); // crea un nuevo div
-            newColor.classList.add('p-5', 'w-64', 'h-25', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'flex-wrap', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
+            newColor.classList.add('p-5', 'w-64', 'h-25', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
             grid.appendChild(newColor); // agrega el nuevo div al grid
             let miColor = generateNewColor(); //genera un color HEX aleatorio y lo guarda en la variable miColor
             let miRGB = hexToRGB(miColor); // convierte el color HEX a RGB y lo guarda en la variable miRGB
+            let miHSL = rgbToHSL(miRGB.r, miRGB.g, miRGB.b); // convierte el color RGB a HSL y lo guarda en la variable miHSL
             newColor.style.backgroundColor = miColor; // le asigna un color de fondo al nuevo div usando la función generateNewColor
             newColor.style.color= "#ffffff"; // le asigna un color de texto blanco al nuevo div
-            newColor.innerHTML = `<p>${miColor}</p><p>RGB(${miRGB.r}, ${miRGB.g}, ${miRGB.b})</p>`; // le asigna el texto del color HEX y RGB al nuevo div
+            newColor.classList.add('flex', 'flex-col', 'items-center'); // le agrega las clases para centrar el texto dentro del nuevo div
+            newColor.innerHTML = `
+                <p class="bg-black/30 rounded-lg p-1 mb-1">HEX: ${miColor}</p>
+                <p class="bg-black/30 rounded-lg p-1 mb-1">RGB: rgb(${miRGB.r}, ${miRGB.g}, ${miRGB.b})</p>
+                <p class="bg-black/30 rounded-lg p-1 mb-1">HSL: hsl(${rgbToHSL(miRGB.r, miRGB.g, miRGB.b).h.toFixed(2)}, ${(rgbToHSL(miRGB.r, miRGB.g, miRGB.b).s * 100).toFixed(2)}%, ${(rgbToHSL(miRGB.r, miRGB.g, miRGB.b).l * 100).toFixed(2)}%)</p>    
+                <p>HSL:(${rgbToHSL.h})</p>
+            `;
         }
         console.log(miSelectColor);
        
@@ -51,4 +58,40 @@
             let g = parseInt(hex.substring(3,5),16);
             let b = parseInt(hex.substring(5,7),16);
             return { r: r, g: g, b: b }
+        }
+
+        function rgbToHSL(r, g, b) {
+            // Paso 1 - convertir de 0-255 a 0-1
+            r = r / 255;
+            g = g / 255;
+            b = b / 255;
+
+            // Paso 2 - encontrar max y min
+            let max = Math.max(r,g, b);
+            let min = Math.min(r,g,b);
+
+            // Paso 3 - calcular L
+            let l = (max + min) / 2;
+
+            // Paso 4 - calcular S
+            let s;
+            if (l <= 0.5) {
+                s = (max - min) / (max + min);
+            } else {
+                s = (max - min) / (2 - max -min);
+            }
+
+            // Paso 5 - calcular H
+            let h;
+            if (max === r) {
+                h = (g - b) / (max - min);
+            } else if (max === g) {
+                h = 2 + (b - r) / (max - min);
+            } else {
+                h = 4 + (r - g) / (max - min);
+            }
+
+            // Paso 6 - convertir H a grados
+            h = h * 60;
+            return { h: h, s: s, l: l } 
         }
