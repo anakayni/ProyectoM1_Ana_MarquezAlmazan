@@ -6,55 +6,51 @@
     <title>Colorfly Studio</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" class="hidden"></script>
 </head>
-<body class="bg-gradient-to-r from-slate-900 to-slate-700 text-white">
-    <header>
+<body class="bg-white text-black min-h-screen p-8">
+    <header class="flex flex-row gap-3 mb-10 items-center flex-wrap">
         <!-- Logo de la empresa -->
         <div class="bg-sky-50/20 rounded-full p-1 border-1 border-sky-50/30 w-30 pl-3 pb-1" >
             <!--<img src="./src/img/colorfly_studio.png" alt="Colorfly Studi logo" width="120" height="auto">-->
-                <span class="inline-flex shrink-0 rounded-full bg-sky-500 w-2 h-2"></span>
-                <span class="text-xs font-light text-white">Colorfly Studio</span>
+            <h1 class="text-xl font-bold mb-6 text-black">Colorfly Studio</h1>
         </div>
-        <!--Barra generadora de colores-->
-        <section>
-            <h2>Generador de Colores</h2>
-            <input type="color" id="colorPicker" name="colorPicker" value="#ff0000">
-            <button onclick="generateColors()">Generar Paleta</button>  
-        </section>
-    </header>
 
-    <main>
-        <section>
-            <h2>Sección 1</h2>
-            <article>
-                <h3>Título del Artículo</h3>
-                <p>Number of Colors</p>
+        <div class="flex flex-row gap-3 mb-10 items-center flex-wrap">      
+                <div class="relative">
+                    <select id="miSelectColor" class="bg-white border border-black/20 text-black text-sm rounded px-3 py-2 cursor-pointer focus:outline-none hover:border-black/40">
+                        <option value="6">6 colores</option>
+                        <option value="8">8 colores</option>
+                        <option value="9">9 colores</option>
+                    </select>
 
-                <div class="w-full max-w-sm min-w-[200px]">      
-                    <div class="relative">
-                        <select id="miSelectColor" class="w-full bg-transparent placeholder:text-sky-50 text-sky-50/80 dark:text-sky-50/80 text-sm border border-sky-50/30 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
-                            <option value="6">6</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                        </select>
+                    <button onclick="saveValue()" class="bg-white border border-black/25 hover:border-black/60 text-black text-sm font-medium px-5 py-2 rounded transition-colors cursor-pointer">
+                    Generar
+                    </button>
 
-                        <button onclick="saveValue()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors shadow-md">Generar</button>
+                    <button onclick="savePalette()"
+                    class="bg-white border-2 border-black/40 hover:border-black text-black text-sm font-semibold px-5 py-2 rounded transition-colors cursor-pointer">
+                    Guardar
+                    </button>
 
                         
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-sky-50">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                        </svg>
-                    </div>
-                </div>
-            </article>
-        </section>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-sky-50">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                    </svg>
+                 </div>
+            </div>
 
-        
-
+    </header>
+    <!--Barra generadora de colores-->
+    <main>
         <section>
-            <h2>Generated Palette</h2>
-            <div id="colorContainer">
+            <!-- Grid de cards -->
+            <div id="grid" class="flex flex-row flex-wrap gap-5 mb-12">
                 <!-- Aquí se mostrarán las cajas de colores generados -->
-                <div id="grid"></div>
+            </div>
+
+            <!-- Paletas guardadas -->
+            <div id="savedSection" class="hidden">
+                <h2 class="text-xl font-bold mb-4 text-black">Paletas guardadas</h2>
+                <div id="savedPalettes" class="flex flex-col gap-2"></div>
             </div>
         </section>
     </main>
