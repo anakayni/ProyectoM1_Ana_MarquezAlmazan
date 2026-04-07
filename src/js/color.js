@@ -16,9 +16,10 @@
             newColor.classList.add('p-5', 'w-64', 'h-25', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'flex-wrap', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
             grid.appendChild(newColor); // agrega el nuevo div al grid
             let miColor = generateNewColor(); //genera un color HEX aleatorio y lo guarda en la variable miColor
+            let miRGB = hexToRGB(miColor); // convierte el color HEX a RGB y lo guarda en la variable miRGB
             newColor.style.backgroundColor = miColor; // le asigna un color de fondo al nuevo div usando la función generateNewColor
             newColor.style.color= "#ffffff"; // le asigna un color de texto blanco al nuevo div
-            newColor.innerHTML = miColor;
+            newColor.innerHTML = `<p>${miColor}</p><p>RGB(${miRGB.r}, ${miRGB.g}, ${miRGB.b})</p>`; // le asigna el texto del color HEX y RGB al nuevo div
         }
         console.log(miSelectColor);
        
@@ -43,4 +44,11 @@
             // Regresamos el color completo, ejemplo: "#A3F2C1"
             return hexColorRep;
         
+        }
+
+        function hexToRGB(hex){
+            let r = parseInt(hex.substring(1,3),16);
+            let g = parseInt(hex.substring(3,5),16);
+            let b = parseInt(hex.substring(5,7),16);
+            return { r: r, g: g, b: b }
         }
