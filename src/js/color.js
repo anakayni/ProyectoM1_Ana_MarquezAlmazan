@@ -13,7 +13,7 @@
         
         for (let i = 1; i<= miSelectColor; i++) {
             newColor = document.createElement("div"); // crea un nuevo div
-            newColor.classList.add('p-5', 'w-64', 'h-25', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
+            newColor.classList.add('p-5', 'w-64', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
             grid.appendChild(newColor); // agrega el nuevo div al grid
             let miColor = generateNewColor(); //genera un color HEX aleatorio y lo guarda en la variable miColor
             let miRGB = hexToRGB(miColor); // convierte el color HEX a RGB y lo guarda en la variable miRGB
@@ -23,9 +23,8 @@
             newColor.classList.add('flex', 'flex-col', 'items-center'); // le agrega las clases para centrar el texto dentro del nuevo div
             newColor.innerHTML = `
                 <p class="bg-black/30 rounded-lg p-1 mb-1">HEX: ${miColor}</p>
-                <p class="bg-black/30 rounded-lg p-1 mb-1">RGB: rgb(${miRGB.r}, ${miRGB.g}, ${miRGB.b})</p>
-                <p class="bg-black/30 rounded-lg p-1 mb-1">HSL: hsl(${rgbToHSL(miRGB.r, miRGB.g, miRGB.b).h.toFixed(2)}, ${(rgbToHSL(miRGB.r, miRGB.g, miRGB.b).s * 100).toFixed(2)}%, ${(rgbToHSL(miRGB.r, miRGB.g, miRGB.b).l * 100).toFixed(2)}%)</p>    
-                <p>HSL:(${rgbToHSL.h})</p>
+                <p class="bg-black/30 rounded-lg p-1 mb-1">RGB: (${miRGB.r}, ${miRGB.g}, ${miRGB.b})</p>   
+                <p class="bg-black/30 rounded-lg p-1 mb-1">HSL: (${miHSL.h}, ${miHSL.s}, ${miHSL.l})</p>
             `;
         }
         console.log(miSelectColor);
@@ -67,7 +66,7 @@
             b = b / 255;
 
             // Paso 2 - encontrar max y min
-            let max = Math.max(r,g, b);
+            let max = Math.max(r,g,b);
             let min = Math.min(r,g,b);
 
             // Paso 3 - calcular L
@@ -91,7 +90,11 @@
                 h = 4 + (r - g) / (max - min);
             }
 
-            // Paso 6 - convertir H a grados
+            // Paso 6 - convertir H a grados y S y L a porcentaje
             h = h * 60;
-            return { h: h, s: s, l: l } 
+            return { 
+                h: Math.round(h),
+                s: Math.round(s * 100) + "%", 
+                l: Math.round(l * 100) + "%",
+            } 
         }
