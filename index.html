@@ -7,38 +7,40 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" class="hidden"></script>
 </head>
 <body class="bg-white text-black min-h-screen p-8">
-    <header class="flex flex-row gap-3 mb-10 items-center flex-wrap">
-        <!-- Logo de la empresa -->
-        <div class="bg-sky-50/20 rounded-full p-1 border-1 border-sky-50/30 w-30 pl-3 pb-1" >
-            <!--<img src="./src/img/colorfly_studio.png" alt="Colorfly Studi logo" width="120" height="auto">-->
-            <h1 class="text-xl font-bold mb-6 text-black">Colorfly Studio</h1>
+    <header class="flex flex-row items-center gap-6 mb-10 flex-wrap">
+    <div class="bg-sky-50/20 rounded-full px-4 py-1 border border-black/10 flex items-center h-11">
+        <h1 class="text-xl font-bold text-black whitespace-nowrap">Colorfly Studio</h1>
+    </div>
+
+    <div class="flex items-center gap-3 flex-wrap">
+        
+        <div class="relative">
+            <select id="miSelectColor" class="bg-white border border-black/20 text-black text-sm rounded px-3 py-2 pr-8 cursor-pointer focus:outline-none hover:border-black/40 appearance-none h-10">
+                <option value="6">6 colores</option>
+                <option value="8">8 colores</option>
+                <option value="9">9 colores</option>
+            </select>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="h-4 w-4 absolute top-3 right-2.5 pointer-events-none text-black/50">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+            </svg>
         </div>
 
-        <div class="flex flex-row gap-3 mb-10 items-center flex-wrap">      
-                <div class="relative">
-                    <select id="miSelectColor" class="bg-white border border-black/20 text-black text-sm rounded px-3 py-2 cursor-pointer focus:outline-none hover:border-black/40">
-                        <option value="6">6 colores</option>
-                        <option value="8">8 colores</option>
-                        <option value="9">9 colores</option>
-                    </select>
+        <button onclick="saveValue()" class="bg-black text-white text-sm font-medium px-5 h-10 rounded transition-colors cursor-pointer hover:bg-black/80">
+            Generar
+        </button>
 
-                    <button onclick="saveValue()" class="bg-white border border-black/25 hover:border-black/60 text-black text-sm font-medium px-5 py-2 rounded transition-colors cursor-pointer">
-                    Generar
-                    </button>
-
-                    <button onclick="savePalette()"
-                    class="bg-white border-2 border-black/40 hover:border-black text-black text-sm font-semibold px-5 py-2 rounded transition-colors cursor-pointer">
-                    Guardar
-                    </button>
-
-                        
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-sky-50">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                    </svg>
-                 </div>
+        <!-- Toast de generador de paleta success -->
+        <div id="toast-success" class="flex items-center p-2 bg-green-50 text-green-800 rounded-lg border border-green-200 h-10 hidden" role="alert">
+            <div class="inline-flex items-center justify-center shrink-0 w-6 h-6 text-green-500 bg-white rounded shadow-sm">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"></path></svg>
             </div>
-
-    </header>
+            <div class="ms-3 text-sm font-medium mr-4">¡Generado!</div>
+            <button type="button" class="ms-auto text-green-500 hover:bg-green-200 p-1 rounded-md" data-dismiss-target="#toast-success" aria-label="Close">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
     <!--Barra generadora de colores-->
     <main>
         <section>
@@ -54,18 +56,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Toast de éxito -->
-    <div id="toast-success" class="flex items-center w-full max-w-sm p-4 text-body bg-neutral-primary-soft rounded-base shadow-xs border border-default" role="alert">
-        <div class="inline-flex items-center justify-center shrink-0 w-7 h-7 text-fg-success bg-success-soft rounded">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"></path></svg>
-        </div>
-        <div class="ms-3 text-sm font-normal">Item moved successfully.</div>
-        <button type="button" class="ms-auto flex items-center justify-center text-body hover:text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded text-sm h-8 w-8 focus:outline-none" data-dismiss-target="#toast-success" aria-label="Close">
-            <span class="sr-only">Close</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
-        </button>
-    </div>
 
     <footer class="fixed bottom-2 left-3 w-full">
         <p>&copy; 2026 Colorfly Studio</p>
