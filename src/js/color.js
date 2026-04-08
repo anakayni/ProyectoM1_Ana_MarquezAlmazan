@@ -28,6 +28,15 @@
             `;
         }
         console.log(miSelectColor);
+
+        //Temporizador para mostrar el toast de generador de paleta success por 5 segundos
+        let toastSuccess = document.getElementById("toast-success");
+        //Mostrar el toast (le quitamos 'hidden')
+        toastSuccess.classList.remove("hidden");
+
+        setTimeout(function(){
+            toastSuccess.classList.add("hidden");
+        },2000);//Tiempo de espera en milisegundos (2segundos)
        
     }
     // Lista de todos los caracteres posibles en un color HEX
@@ -92,9 +101,18 @@
 
             // Paso 6 - convertir H a grados y S y L a porcentaje
             h = h * 60;
+            //Si h es negativo, le sumamos 360 para que dé la vuelta al círculo 
+            if(h<0){
+                h = h + 360;
+            }
+
             return { 
                 h: Math.round(h),
                 s: Math.round(s * 100) + "%", 
                 l: Math.round(l * 100) + "%",
             } 
         }
+
+        
+
+       
