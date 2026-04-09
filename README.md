@@ -7,7 +7,7 @@
 
 ## 🌐 Live Demo / Demo en vivo
 
-[Ver en GitHub Pages](https://tu-usuario.github.io/colorfly-studio)
+[Ver en GitHub Pages](https://anakayni.github.io/ProyectoM1_Ana_MarquezAlmazan/)
 
 ---
 
