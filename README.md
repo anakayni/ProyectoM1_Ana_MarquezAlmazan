@@ -1,7 +1,7 @@
 # 🎨 Colorfly Studio
 
-> A color palette generator built with vanilla JavaScript, HTML, and Tailwind CSS.  
-> Generador de paletas de colores construido con JavaScript puro, HTML y Tailwind CSS.
+> A color palette generator built with vanilla JavaScript, HTML, and CSS.  
+> Generador de paletas de colores construido con JavaScript puro, HTML y CSS.
 
 ---
 
@@ -108,7 +108,7 @@ Aprendí que las funciones deben vivir al mismo nivel para poder usarse entre s�
 
 - HTML5
 - JavaScript (Vanilla, sin librerías)
-- Tailwind CSS (estilos)
+- CSS (estilos)
 
 ---
 
@@ -179,7 +179,7 @@ This project was built step by step while learning JavaScript for the first time
 
 - HTML5
 - Vanilla JavaScript (no libraries)
-- Tailwind CSS
+- CSS
 
 ---
 

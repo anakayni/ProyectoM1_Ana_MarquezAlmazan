@@ -13,18 +13,17 @@
         
         for (let i = 1; i<= miSelectColor; i++) {
             newColor = document.createElement("div"); // crea un nuevo div
-            newColor.classList.add('p-5', 'w-64', 'rounded-lg', 'shadow-md', 'flex', 'flex-col', 'items-center', 'border', 'border-sky-50/30'); // le agrega la clase card
+            newColor.classList.add('color-card'); // le agrega la clase card
             grid.appendChild(newColor); // agrega el nuevo div al grid
             let miColor = generateNewColor(); //genera un color HEX aleatorio y lo guarda en la variable miColor
             let miRGB = hexToRGB(miColor); // convierte el color HEX a RGB y lo guarda en la variable miRGB
             let miHSL = rgbToHSL(miRGB.r, miRGB.g, miRGB.b); // convierte el color RGB a HSL y lo guarda en la variable miHSL
             newColor.style.backgroundColor = miColor; // le asigna un color de fondo al nuevo div usando la función generateNewColor
             newColor.style.color= "#ffffff"; // le asigna un color de texto blanco al nuevo div
-            newColor.classList.add('flex', 'flex-col', 'items-center'); // le agrega las clases para centrar el texto dentro del nuevo div
             newColor.innerHTML = `
-                <p class="bg-black/30 rounded-lg p-1 mb-1">HEX: ${miColor}</p>
-                <p class="bg-black/30 rounded-lg p-1 mb-1">RGB: (${miRGB.r}, ${miRGB.g}, ${miRGB.b})</p>   
-                <p class="bg-black/30 rounded-lg p-1 mb-1">HSL: (${miHSL.h}, ${miHSL.s}, ${miHSL.l})</p>
+                <p class="color-label">HEX: ${miColor}</p>
+                <p class="color-label">RGB: (${miRGB.r}, ${miRGB.g}, ${miRGB.b})</p>   
+                <p class="color-label">HSL: (${miHSL.h}, ${miHSL.s}, ${miHSL.l})</p>
             `;
         }
         console.log(miSelectColor);
