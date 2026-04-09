@@ -1,0 +1,11 @@
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Variables de entorno (contraseñas)
+.env
+
+# Dependencias de Node (si usas en el futuro)
+node_modules/
